@@ -5,11 +5,11 @@
 # Site
 title: GUIYIVIEW
 subtitle: '生活随笔'
-description: ''
+description: 'iOS/Swift'
 keywords: 'iOS, Objective-C, C, Swift'
 author: GUIYIVIEW
 language: zh-CN
-timezone: ''
+timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'

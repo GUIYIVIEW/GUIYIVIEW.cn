@@ -20,20 +20,22 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="近来简书网站总是报错打不开，于是尝试搭建一个简洁的记录文档，内容迁移到这里。简书">
+  <meta name="description" content="自定义实现类似UIButton的addTarget事件响应链 沿用OC调用方式动态调用 声明123456weak var target: AnyObject?;var action: Selector?;func addTarget(_ target: AnyObject, selector: Selector) &amp;#123;    self.target &#x3D; target;    self.ac">
 <meta property="og:type" content="article">
-<meta property="og:title" content="地址迁移">
-<meta property="og:url" content="http://example.com/2022/11/04/hello-world/index.html">
+<meta property="og:title" content="Swift Target-Action、Curring 设计模式">
+<meta property="og:url" content="http://example.com/2022/11/04/2022110407/index.html">
 <meta property="og:site_name" content="GUIYIVIEW">
-<meta property="og:description" content="近来简书网站总是报错打不开，于是尝试搭建一个简洁的记录文档，内容迁移到这里。简书">
+<meta property="og:description" content="自定义实现类似UIButton的addTarget事件响应链 沿用OC调用方式动态调用 声明123456weak var target: AnyObject?;var action: Selector?;func addTarget(_ target: AnyObject, selector: Selector) &amp;#123;    self.target &#x3D; target;    self.ac">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-11-04T03:55:52.189Z">
-<meta property="article:modified_time" content="2022-11-04T07:35:30.395Z">
+<meta property="article:published_time" content="2022-11-04T07:36:50.000Z">
+<meta property="article:modified_time" content="2022-11-04T07:37:31.649Z">
 <meta property="article:author" content="GUIYIVIEW">
-<meta property="article:tag" content="Blog">
+<meta property="article:tag" content="iOS">
+<meta property="article:tag" content="Swift">
+<meta property="article:tag" content="设计模式">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2022/11/04/hello-world/">
+<link rel="canonical" href="http://example.com/2022/11/04/2022110407/">
 
 
 <script id="page-configurations">
@@ -46,7 +48,7 @@
   };
 </script>
 
-  <title>地址迁移 | GUIYIVIEW</title>
+  <title>Swift Target-Action、Curring 设计模式 | GUIYIVIEW</title>
   
 
 
@@ -182,7 +184,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/04/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/04/2022110407/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -195,7 +197,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          地址迁移
+          Swift Target-Action、Curring 设计模式
         </h1>
 
         <div class="post-meta">
@@ -206,7 +208,16 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-11-04 11:55:52 / 修改时间：15:35:30" itemprop="dateCreated datePublished" datetime="2022-11-04T11:55:52+08:00">2022-11-04</time>
+              <time title="创建时间：2022-11-04 15:36:50 / 修改时间：15:37:31" itemprop="dateCreated datePublished" datetime="2022-11-04T15:36:50+08:00">2022-11-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a>
+                </span>
             </span>
 
           
@@ -220,7 +231,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>近来简书网站总是报错打不开，于是尝试搭建一个简洁的记录文档，内容迁移到这里。<br><a target="_blank" rel="noopener" href="https://www.jianshu.com/u/40ce3abe6698">简书</a></p>
+        <p>自定义实现类似<code>UIButton</code>的<code>addTarget</code>事件响应链</p>
+<h5 id="沿用OC调用方式"><a href="#沿用OC调用方式" class="headerlink" title="沿用OC调用方式"></a>沿用OC调用方式</h5><p>动态调用</p>
+<p>声明<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">weak var target: AnyObject?;</span><br><span class="line">var action: Selector?;</span><br><span class="line">func addTarget(_ target: AnyObject, selector: Selector) &#123;</span><br><span class="line">    self.target = target;</span><br><span class="line">    self.action = selector;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>调用<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if let target = target, let selector = action &#123;</span><br><span class="line">    if let method = class_getInstanceMethod(type(of: target), selector) &#123;</span><br><span class="line">        let imp = method_getImplementation(method);</span><br><span class="line">        typealias Function = @convention(c) (AnyObject, Selector, Any?) -&gt; ();</span><br><span class="line">        let function = unsafeBitCast(imp, to: Function.self);</span><br><span class="line">        function(target, selector, self);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h5 id="Swift-Curring柯里化方式"><a href="#Swift-Curring柯里化方式" class="headerlink" title="Swift Curring柯里化方式"></a>Swift Curring<code>柯里化</code>方式</h5><p>声明<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">protocol TargetAction &#123;</span><br><span class="line">    func performAction();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">struct TargetActionWrapper&lt;T: AnyObject&gt;: TargetAction &#123;</span><br><span class="line">    weak var target: T?;</span><br><span class="line">    let action: (T) -&gt; () -&gt; ();</span><br><span class="line">    </span><br><span class="line">    func performAction() &#123;</span><br><span class="line">        if let t = target &#123;</span><br><span class="line">            action(t)();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Model: NSObject &#123;</span><br><span class="line">    var wrapper: TargetAction?</span><br><span class="line">    func addTarget&lt;T: AnyObject&gt;(target: T, action: @escaping (T) -&gt; () -&gt; ()) &#123;</span><br><span class="line">         wrapper = TargetActionWrapper(target: target, action: action);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    func invoke() &#123;</span><br><span class="line">        wrapper?.performAction();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>调用<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let model = Model();</span><br><span class="line">model.addTarget(target: self, action: Test.invokeAction);</span><br><span class="line"></span><br><span class="line">func invokeAction() &#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上面方法无法传递参数，需要进一步扩展。扩展可以根据自己需要，此处只简单举例。<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">protocol TargetAction &#123;</span><br><span class="line">    func performAction(_ userInfo: Any?);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">struct TargetActionWrapper&lt;T: AnyObject&gt;: TargetAction &#123;</span><br><span class="line">    weak var target: T?;</span><br><span class="line">    let action: (T) -&gt; (Any?) -&gt; ();</span><br><span class="line">    </span><br><span class="line">    func performAction(_ userInfo: Any?) &#123;</span><br><span class="line">        if let t = target &#123;</span><br><span class="line">            action(t)(userInfo);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Model: NSObject &#123;</span><br><span class="line">    var wrapper: TargetAction?</span><br><span class="line">    var userInfo: Any?;</span><br><span class="line">    func addTarget&lt;T: AnyObject&gt;(target: T, action: @escaping (T) -&gt; (Any?) -&gt; (), userInfo: Any? = nil) &#123;</span><br><span class="line">        self.userInfo = userInfo;</span><br><span class="line">         wrapper = TargetActionWrapper(target: target, action: action);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    func invoke() &#123;</span><br><span class="line">        wrapper?.performAction(userInfo);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 调用</span><br><span class="line">let model = Model();</span><br><span class="line">model.addTarget(target: self, action: Test.invokeAction, userInfo: [&quot;a&quot;: &quot;b&quot;]);</span><br><span class="line"></span><br><span class="line">func invokeAction(_ sender: Any) &#123;&#125;</span><br></pre></td></tr></table></figure></p>
 
     </div>
 
@@ -230,7 +245,9 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Blog/" rel="tag"># Blog</a>
+              <a href="/tags/iOS/" rel="tag"># iOS</a>
+              <a href="/tags/Swift/" rel="tag"># Swift</a>
+              <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag"># 设计模式</a>
           </div>
 
         
@@ -238,10 +255,13 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2022/11/04/2022110401/" rel="next" title="iOS监听系统侧滑返回事件">
-      iOS监听系统侧滑返回事件 <i class="fa fa-chevron-right"></i>
+    <a href="/2022/11/04/2022110406/" rel="prev" title="iOS崩溃错误分析记录">
+      <i class="fa fa-chevron-left"></i> iOS崩溃错误分析记录
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/11/04/2022110408/" rel="next" title="iOS LaunchScreen.storyboard启动图更新">
+      iOS LaunchScreen.storyboard启动图更新 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -301,6 +321,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B2%BF%E7%94%A8OC%E8%B0%83%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">沿用OC调用方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Swift-Curring%E6%9F%AF%E9%87%8C%E5%8C%96%E6%96%B9%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">Swift Curring柯里化方式</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

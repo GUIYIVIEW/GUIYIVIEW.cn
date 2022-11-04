@@ -20,20 +20,21 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="近来简书网站总是报错打不开，于是尝试搭建一个简洁的记录文档，内容迁移到这里。简书">
+  <meta name="description" content="根据苹果要求2020年4月之后上线的APP都必须使用LaunchScreen适配启动图，在研究的过程中发现还是有一些坑的，记录一下。 环境: Xcode 11.3 + iPhone 11 + iOS 13.3 使用LaunchScreen设置启动图运行，之后更新图片内容，发现运行仍然是旧的图片。也试过网上的改名字、删除sb再新建、卸载重装、卸载+重启后重装，只有最后一项是每次都是正确的，前几项大多">
 <meta property="og:type" content="article">
-<meta property="og:title" content="地址迁移">
-<meta property="og:url" content="http://example.com/2022/11/04/hello-world/index.html">
+<meta property="og:title" content="iOS LaunchScreen.storyboard启动图更新">
+<meta property="og:url" content="http://example.com/2022/11/04/2022110408/index.html">
 <meta property="og:site_name" content="GUIYIVIEW">
-<meta property="og:description" content="近来简书网站总是报错打不开，于是尝试搭建一个简洁的记录文档，内容迁移到这里。简书">
+<meta property="og:description" content="根据苹果要求2020年4月之后上线的APP都必须使用LaunchScreen适配启动图，在研究的过程中发现还是有一些坑的，记录一下。 环境: Xcode 11.3 + iPhone 11 + iOS 13.3 使用LaunchScreen设置启动图运行，之后更新图片内容，发现运行仍然是旧的图片。也试过网上的改名字、删除sb再新建、卸载重装、卸载+重启后重装，只有最后一项是每次都是正确的，前几项大多">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-11-04T03:55:52.189Z">
-<meta property="article:modified_time" content="2022-11-04T07:35:30.395Z">
+<meta property="article:published_time" content="2022-11-04T07:37:50.000Z">
+<meta property="article:modified_time" content="2022-11-04T07:38:40.441Z">
 <meta property="article:author" content="GUIYIVIEW">
-<meta property="article:tag" content="Blog">
+<meta property="article:tag" content="iOS">
+<meta property="article:tag" content="启动图">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2022/11/04/hello-world/">
+<link rel="canonical" href="http://example.com/2022/11/04/2022110408/">
 
 
 <script id="page-configurations">
@@ -46,7 +47,7 @@
   };
 </script>
 
-  <title>地址迁移 | GUIYIVIEW</title>
+  <title>iOS LaunchScreen.storyboard启动图更新 | GUIYIVIEW</title>
   
 
 
@@ -182,7 +183,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/04/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/04/2022110408/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -195,7 +196,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          地址迁移
+          iOS LaunchScreen.storyboard启动图更新
         </h1>
 
         <div class="post-meta">
@@ -206,7 +207,16 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-11-04 11:55:52 / 修改时间：15:35:30" itemprop="dateCreated datePublished" datetime="2022-11-04T11:55:52+08:00">2022-11-04</time>
+              <time title="创建时间：2022-11-04 15:37:50 / 修改时间：15:38:40" itemprop="dateCreated datePublished" datetime="2022-11-04T15:37:50+08:00">2022-11-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a>
+                </span>
             </span>
 
           
@@ -220,8 +230,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>近来简书网站总是报错打不开，于是尝试搭建一个简洁的记录文档，内容迁移到这里。<br><a target="_blank" rel="noopener" href="https://www.jianshu.com/u/40ce3abe6698">简书</a></p>
-
+        <p>根据苹果要求2020年4月之后上线的APP都必须使用LaunchScreen适配启动图，在研究的过程中发现还是有一些坑的，记录一下。</p>
+<p>环境: Xcode 11.3 + iPhone 11 + iOS 13.3</p>
+<p>使用LaunchScreen设置启动图运行，之后更新图片内容，发现运行仍然是旧的图片。也试过网上的改名字、删除sb再新建、卸载重装、卸载+重启后重装，只有最后一项是每次都是正确的，前几项大多数情况下还是错误的。</p>
+<p>使用模拟器测试发现，只有在全面屏时会更新失效。</p>
+<p><strong>以下路径只在iOS 13系统下测试，其他设备的路径未测试。建议执行下面操作时每个版本只执行一次，否则不知道会不会出现黑白屏之类的情况。测试的时候没有执行下面代码，仅仅是频繁更换启动图就会出现黑白屏。</strong></p>
+<h5 id="1-直接删除截图存放的路径目录"><a href="#1-直接删除截图存放的路径目录" class="headerlink" title="1.直接删除截图存放的路径目录"></a>1.直接删除截图存放的路径目录</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@&quot;Library/SplashBoard/Snapshots&quot;];</span><br><span class="line">[[NSFileManager defaultManager] removeItemAtPath:path error:nil];</span><br></pre></td></tr></table></figure>
+<p>可能有些莫名的情况下会会出现黑白屏，这时候使用<code>1</code>方法并不能完美解决，使用下面的<code>2</code>方法测试，即时是出现了黑屏，替换之后也可以显示正常。</p>
+<h5 id="2-替换截图目录下文件"><a href="#2-替换截图目录下文件" class="headerlink" title="2.替换截图目录下文件"></a>2.替换截图目录下文件</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">// 获取截图存储路径</span><br><span class="line">NSString *bundleID = [[NSBundle mainBundle].infoDictionary objectForKey:@&quot;CFBundleVersion&quot;];</span><br><span class="line">NSString *shotsDirName = [bundleID stringByAppendingString:@&quot; - &#123;DEFAULT GROUP&#125;&quot;];</span><br><span class="line">NSString *shotsPath = [NSHomeDirectory() stringByAppendingPathComponent:@&quot;Library/SplashBoard/Snapshots&quot;];</span><br><span class="line">shotsPath = [shotsPath stringByAppendingPathComponent:shotsDirName];</span><br><span class="line">NSError *readError = nil;</span><br><span class="line">NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:shotsPath error:&amp;readError];</span><br><span class="line">// 遍历该目录下截图文件</span><br><span class="line">for (NSString *fileName in files) &#123;</span><br><span class="line">    NSString *path = [shotsPath stringByAppendingPathComponent:fileName];</span><br><span class="line">    NSError *error = nil;</span><br><span class="line">    NSData *data = [NSData dataWithContentsOfFile:path options:NSDataReadingMappedIfSafe error:&amp;error];</span><br><span class="line">    if (!error &amp;&amp; [data length]) &#123;</span><br><span class="line">        UIImage *image = [UIImage imageWithData:data];</span><br><span class="line">        if (image) &#123;</span><br><span class="line">            UIImage *launchImage = [UIImage imageNamed:@&quot;launch&quot;];</span><br><span class="line">            // 设置图片尺寸为旧图尺寸</span><br><span class="line">            launchImage = [launchImage imageByResizeToSize:image.size contentMode:UIViewContentModeScaleAspectFit];</span><br><span class="line">            // 写入目录，替换旧图</span><br><span class="line">            NSData *launchData = UIImagePNGRepresentation(launchImage);</span><br><span class="line">            [launchData writeToFile:path atomically:YES];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>以上两种方法都只能保证更新后二次启动是显示正确的，首次启动没找到办法。</strong></p>
+<p>然而大多数人都想要酷炫的启动，创建出了很多启动动画，那么这时候对于苹果要求的一张图适配所有屏幕就可能会产生很多问题，比如图片在原有的坐标上可能发生偏移，而你也不知道到底偏移了多少。</p>
+<p>看到有人提出这样的方案，原理还是跟之前的LaunchImage一样，但是不知道这个能不能在苹果最新的这个规则下上架。<a href="[https://juejin.im/post/5e1463d4f265da5d716e572d](https://juejin.im/post/5e1463d4f265da5d716e572d">此处是链接哦</a><br>)</p>
+<p>以上仅限于个人只有一个手机，若有其他情况，大家也可以补充。</p>
+<h2 id="更新：经过与苹果官方开发人员讨论，明确表示这种情况只在开发模式下频繁出现，在AppStore上不会出现。"><a href="#更新：经过与苹果官方开发人员讨论，明确表示这种情况只在开发模式下频繁出现，在AppStore上不会出现。" class="headerlink" title="更新：经过与苹果官方开发人员讨论，明确表示这种情况只在开发模式下频繁出现，在AppStore上不会出现。"></a>更新：经过与苹果官方开发人员讨论，明确表示这种情况只在开发模式下频繁出现，在AppStore上不会出现。</h2>
     </div>
 
     
@@ -230,7 +251,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Blog/" rel="tag"># Blog</a>
+              <a href="/tags/iOS/" rel="tag"># iOS</a>
+              <a href="/tags/%E5%90%AF%E5%8A%A8%E5%9B%BE/" rel="tag"># 启动图</a>
           </div>
 
         
@@ -238,11 +260,11 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2022/11/04/2022110401/" rel="next" title="iOS监听系统侧滑返回事件">
-      iOS监听系统侧滑返回事件 <i class="fa fa-chevron-right"></i>
+    <a href="/2022/11/04/2022110407/" rel="prev" title="Swift Target-Action、Curring 设计模式">
+      <i class="fa fa-chevron-left"></i> Swift Target-Action、Curring 设计模式
     </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -301,6 +323,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E7%9B%B4%E6%8E%A5%E5%88%A0%E9%99%A4%E6%88%AA%E5%9B%BE%E5%AD%98%E6%94%BE%E7%9A%84%E8%B7%AF%E5%BE%84%E7%9B%AE%E5%BD%95"><span class="nav-number">1.</span> <span class="nav-text">1.直接删除截图存放的路径目录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E6%9B%BF%E6%8D%A2%E6%88%AA%E5%9B%BE%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%96%87%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">2.替换截图目录下文件</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%EF%BC%9A%E7%BB%8F%E8%BF%87%E4%B8%8E%E8%8B%B9%E6%9E%9C%E5%AE%98%E6%96%B9%E5%BC%80%E5%8F%91%E4%BA%BA%E5%91%98%E8%AE%A8%E8%AE%BA%EF%BC%8C%E6%98%8E%E7%A1%AE%E8%A1%A8%E7%A4%BA%E8%BF%99%E7%A7%8D%E6%83%85%E5%86%B5%E5%8F%AA%E5%9C%A8%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E4%B8%8B%E9%A2%91%E7%B9%81%E5%87%BA%E7%8E%B0%EF%BC%8C%E5%9C%A8AppStore%E4%B8%8A%E4%B8%8D%E4%BC%9A%E5%87%BA%E7%8E%B0%E3%80%82"><span class="nav-number"></span> <span class="nav-text">更新：经过与苹果官方开发人员讨论，明确表示这种情况只在开发模式下频繁出现，在AppStore上不会出现。</span></a></div>
       </div>
       <!--/noindex-->
 

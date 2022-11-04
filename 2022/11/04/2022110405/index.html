@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="前言突然接手了一个许久未曾更新的项目，项目中几乎全国每个城市都建了一个target，而手动打包的话需要很大的耐心，且浪费非常多的时间。鉴于此，在网上搜索了如何使用多target打包，这篇文章讲解的很详细，但是涉及的其它内容太多，研究这些内容也有点费力。于是自己就编写测试、边改边测，终于花费了一个多小时，成功实现了一个傻瓜式教程T_T. 第一步编写Fastfile文件，关于fastlane的安装就不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS打包 fastlane多个target同时打包">
+<meta property="og:url" content="http://example.com/2022/11/04/2022110405/index.html">
+<meta property="og:site_name" content="GUIYIVIEW">
+<meta property="og:description" content="前言突然接手了一个许久未曾更新的项目，项目中几乎全国每个城市都建了一个target，而手动打包的话需要很大的耐心，且浪费非常多的时间。鉴于此，在网上搜索了如何使用多target打包，这篇文章讲解的很详细，但是涉及的其它内容太多，研究这些内容也有点费力。于是自己就编写测试、边改边测，终于花费了一个多小时，成功实现了一个傻瓜式教程T_T. 第一步编写Fastfile文件，关于fastlane的安装就不">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/20221104/1094796-61e4424d6680b0dd.png">
+<meta property="article:published_time" content="2022-11-04T07:31:54.000Z">
+<meta property="article:modified_time" content="2022-11-04T07:53:58.915Z">
+<meta property="article:author" content="GUIYIVIEW">
+<meta property="article:tag" content="iOS">
+<meta property="article:tag" content="fastlane">
+<meta property="article:tag" content="打包">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/20221104/1094796-61e4424d6680b0dd.png">
+
+<link rel="canonical" href="http://example.com/2022/11/04/2022110405/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>iOS打包 fastlane多个target同时打包 | GUIYIVIEW</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="GUIYIVIEW" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">GUIYIVIEW</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">生活随笔</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/04/2022110405/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="GUIYIVIEW">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GUIYIVIEW">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          iOS打包 fastlane多个target同时打包
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-11-04 15:31:54 / 修改时间：15:53:58" itemprop="dateCreated datePublished" datetime="2022-11-04T15:31:54+08:00">2022-11-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/%E6%89%93%E5%8C%85/" itemprop="url" rel="index"><span itemprop="name">打包</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>突然接手了一个许久未曾更新的项目，项目中几乎全国每个城市都建了一个<code>target</code>，而手动打包的话需要很大的耐心，且浪费非常多的时间。鉴于此，在网上搜索了如何使用多<code>target</code>打包，<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2893994e573b">这篇文章讲解的很详细</a>，但是涉及的其它内容太多，研究这些内容也有点费力。于是自己就编写测试、边改边测，终于花费了一个多小时，成功实现了一个傻瓜式教程<code>T_T</code>.</p>
+<h3 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h3><p>编写<code>Fastfile</code>文件，关于<code>fastlane</code>的安装就不作叙述。<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line">default_platform(:ios)</span><br><span class="line"></span><br><span class="line">HOME_PATH = ENV[&quot;HOME&quot;] #home 路径 取系统环境变量 HOME</span><br><span class="line">IPA_BASE_PATH = &quot;#&#123;HOME_PATH&#125;/Desktop/IPA/&quot; # ipa基础路径</span><br><span class="line">FIR_IM_API_TOKEN = &quot;填写fir token&quot; #fir.im api_token</span><br><span class="line"></span><br><span class="line">def archive(schemeName, verStr, method)</span><br><span class="line"></span><br><span class="line">    verArray = verStr.split(&quot;.&quot;)</span><br><span class="line">        build = verArray.pop()</span><br><span class="line">        version = verArray.join(&quot;.&quot;)</span><br><span class="line"></span><br><span class="line">    if !schemeName</span><br><span class="line">        notification(subtitle: &quot;参数错误&quot;, message: &quot;错误信息：请输入 schemeName&quot;)</span><br><span class="line">        return</span><br><span class="line">    end</span><br><span class="line"></span><br><span class="line">    if !version</span><br><span class="line">        notification(subtitle:&quot;参数错误&quot;, message: &quot;错误信息：请输入 version&quot;)</span><br><span class="line">        return</span><br><span class="line">    end</span><br><span class="line">    </span><br><span class="line">    if !build</span><br><span class="line">        notification(subtitle: &quot;参数错误&quot;, message: &quot;错误信息：请输入 build&quot;)</span><br><span class="line">        return</span><br><span class="line">    end</span><br><span class="line"></span><br><span class="line">    puts &quot;开始打包 #&#123;schemeName&#125; #&#123;verStr&#125;&quot;</span><br><span class="line"></span><br><span class="line">    floderName = &quot;v&quot; + version + &quot;Build&quot; + build</span><br><span class="line">    if method == &quot;ad-hoc&quot;</span><br><span class="line">        dir_name = &quot;AdHoc&quot;</span><br><span class="line">    elsif method == &quot;app-store&quot;</span><br><span class="line">        dir_name = &quot;AppStore&quot;</span><br><span class="line">    elsif method == &quot;development&quot;</span><br><span class="line">        dir_name = &quot;Develop&quot;</span><br><span class="line">    else</span><br><span class="line">        dir_name = &quot;unknown&quot;</span><br><span class="line">    end</span><br><span class="line">    time = Time.new.strftime(&quot;%Y%m%d_%H%M&quot;)</span><br><span class="line">    output_directory = &quot;#&#123;IPA_BASE_PATH&#125;/#&#123;schemeName&#125;_#&#123;time&#125;/&quot; + floderName + &quot;/&quot; + dir_name</span><br><span class="line">    #编译 ipa</span><br><span class="line">    gym(</span><br><span class="line">        # 指定scheme名字</span><br><span class="line">        scheme: &quot;#&#123;schemeName&#125;&quot;,</span><br><span class="line">        # 输出的ipa名称</span><br><span class="line">        output_name: &quot;#&#123;schemeName&#125;&quot;,</span><br><span class="line">        # 是否清空以前的编译信息 true是</span><br><span class="line">        clean: true,</span><br><span class="line">        # 指定输出文件夹，这里会保存我们最后生成的ipa文件</span><br><span class="line">        output_directory: output_directory,</span><br><span class="line">        # 指定打包所使用的的输出方式，目前支持 app-store, package, ad-hoc, enterprise, development</span><br><span class="line">        export_method: method</span><br><span class="line">        )</span><br><span class="line">    return output_directory</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">def eachArchive(options, method, upload)</span><br><span class="line">    string = options[:v]</span><br><span class="line"></span><br><span class="line">    tmpArray = string.split(&quot;+&quot;)</span><br><span class="line">    puts &quot;====: #&#123;options&#125;， #&#123;tmpArray&#125;&quot;</span><br><span class="line">    for tmp in tmpArray do </span><br><span class="line">        array = tmp.split(&quot;_&quot;)</span><br><span class="line">        verStr = array.pop()</span><br><span class="line">        name = array.first()</span><br><span class="line">        output_directory = archive(name, verStr, method)</span><br><span class="line">        if !output_directory</span><br><span class="line">            next</span><br><span class="line">        end</span><br><span class="line"></span><br><span class="line">        if upload != true</span><br><span class="line">            next</span><br><span class="line">        end</span><br><span class="line">        # 上传fir</span><br><span class="line">        fir_im_upload_path = output_directory + &quot;/#&#123;name&#125;.ipa&quot;</span><br><span class="line">        puts &quot;上传FIR 路径为：&quot; + fir_im_upload_path</span><br><span class="line">        sh(&quot;fir publish #&#123;fir_im_upload_path&#125; -T #&#123;FIR_IM_API_TOKEN&#125;&quot;)</span><br><span class="line">        result_message = &quot;内测版本 #&#123;name&#125;.ipa 版本号&quot; + verStr + &quot;上传 fir.im 成功&quot;</span><br><span class="line">        notification(subtitle:&quot;🎉🎉 #&#123;method&#125; 操作成功&quot;, message:&quot;#&#123;result_message&#125;&quot;)</span><br><span class="line">        sh(&quot;say #&#123;result_message&#125;&quot;)</span><br><span class="line">    end</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">platform :ios do</span><br><span class="line">  desc &quot;Description of what the lane does&quot;</span><br><span class="line">  lane :adhoc do |options|</span><br><span class="line">      eachArchive(options, &quot;ad-hoc&quot;, true)</span><br><span class="line">  end</span><br><span class="line"></span><br><span class="line">  lane :reipa do |options|</span><br><span class="line">      eachArchive(options, &quot;app-store&quot;, false)</span><br><span class="line">  end</span><br><span class="line">end</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<h3 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h3><p>因为是傻瓜式教程，必然还是有些手动工程操作的，那就是在打不同类型的包时，需要手动在工程中改变描述文件的选择，比如打<code>Adhoc</code>包，就需要在工程中选择<code>Adhoc</code>的描述文件，其它亦如是。</p>
+<h3 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h3><p>用法<br>单个<code>target</code>使用 <code>fastlane adhoc v:TestOne_1.2.3.45</code><br>多个<code>target</code>使用 <code>fastlane adhoc v:TestOne_1.2.3.45+TestTwo_1.2.34</code><br>总之就是根据自己需要打哪些<code>target</code>，就在后面拼上对应的格式，这还真是一看就会的傻瓜式方式。<br><code>+_.</code>这些符号都是为了方便区分的，当然，这个格式是可以自己手动改的，也可以直接在<code>Fastfile</code>文件中定义一个数组，而不用在命令行每次都手动拼。</p>
+<h3 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h3><p><code>xcodebuild: error: The workspace named &quot;CITY&quot; does not contain a scheme named &quot;CITY&quot;. The &quot;-list&quot; option can be used to find the names of the schemes in the workspace.</code><br>解决方案是把工程中<code>scheme</code>对应的<code>project</code>改为对应的<code>Workspace</code>，如果不是<code>Workspace</code>工程的不必理会这一步。<br><img src="/images/20221104/1094796-61e4424d6680b0dd.png" alt="QQ20211209-101443.png"></p>
+<h3 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h3><p>目前没有发现其它错误信息，虽然是傻瓜式的方式，不过也节约了不少时间，而且配置简单，一看就懂。缺点就是如果拼接格式中间有错误，就会从错误的<code>target</code>停止，但是前面已经打包好的是不受影响，可以从错误的位置再次拼接后执行。</p>
+<p>如果你有方便的方法可以去除手动更新描述文件这一步，敬请留言🤗</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/iOS/" rel="tag"># iOS</a>
+              <a href="/tags/fastlane/" rel="tag"># fastlane</a>
+              <a href="/tags/%E6%89%93%E5%8C%85/" rel="tag"># 打包</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/11/04/2022110404/" rel="prev" title="NSTimer、CADisplayLink、dispatch_source_t小记">
+      <i class="fa fa-chevron-left"></i> NSTimer、CADisplayLink、dispatch_source_t小记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/11/04/2022110406/" rel="next" title="iOS崩溃错误分析记录">
+      iOS崩溃错误分析记录 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5"><span class="nav-number">2.</span> <span class="nav-text">第一步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5"><span class="nav-number">3.</span> <span class="nav-text">第二步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5"><span class="nav-number">4.</span> <span class="nav-text">第三步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%99%E8%AF%AF"><span class="nav-number">5.</span> <span class="nav-text">错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E5%B0%BE"><span class="nav-number">6.</span> <span class="nav-text">结尾</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">GUIYIVIEW</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GUIYIVIEW</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  
+
+    </div>
+</body>
+</html>

@@ -5,25 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 6.3.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/GUIYIVIEW/GUIYIVIEW.github.io.git/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/GUIYIVIEW/GUIYIVIEW.github.io.git/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/GUIYIVIEW/GUIYIVIEW.github.io.git/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/GUIYIVIEW/GUIYIVIEW.github.io.git/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/GUIYIVIEW/GUIYIVIEW.cn.git/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/GUIYIVIEW/GUIYIVIEW.cn.git/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/GUIYIVIEW/GUIYIVIEW.cn.git/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/GUIYIVIEW/GUIYIVIEW.cn.git/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/GUIYIVIEW/GUIYIVIEW.github.io.git/css/main.css">
+<link rel="stylesheet" href="/GUIYIVIEW/GUIYIVIEW.cn.git/css/main.css">
 
 
-<link rel="stylesheet" href="/GUIYIVIEW/GUIYIVIEW.github.io.git/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/GUIYIVIEW/GUIYIVIEW.cn.git/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"github.com","root":"/GUIYIVIEW/GUIYIVIEW.github.io.git/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"github.com","root":"/GUIYIVIEW/GUIYIVIEW.cn.git/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="自定义实现类似UIButton的addTarget事件响应链 沿用OC调用方式动态调用 声明123456weak var target: AnyObject?;var action: Selector?;func addTarget(_ target: AnyObject, selector: Selector) &amp;#123;    self.target &#x3D; target;    self.ac">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift Target-Action、Curring 设计模式">
-<meta property="og:url" content="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/2022/11/04/2022110407/index.html">
+<meta property="og:url" content="https://github.com/GUIYIVIEW/GUIYIVIEW.cn.git/2022/11/04/2022110407/index.html">
 <meta property="og:site_name" content="GUIYIVIEW">
 <meta property="og:description" content="自定义实现类似UIButton的addTarget事件响应链 沿用OC调用方式动态调用 声明123456weak var target: AnyObject?;var action: Selector?;func addTarget(_ target: AnyObject, selector: Selector) &amp;#123;    self.target &#x3D; target;    self.ac">
 <meta property="og:locale" content="zh_CN">
@@ -35,7 +35,7 @@
 <meta property="article:tag" content="设计模式">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/2022/11/04/2022110407/">
+<link rel="canonical" href="https://github.com/GUIYIVIEW/GUIYIVIEW.cn.git/2022/11/04/2022110407/">
 
 
 <script id="page-configurations">
@@ -79,7 +79,7 @@
   </style>
 </noscript>
 
-<link rel="alternate" href="/GUIYIVIEW/GUIYIVIEW.github.io.git/atom.xml" title="GUIYIVIEW" type="application/atom+xml">
+<link rel="alternate" href="/GUIYIVIEW/GUIYIVIEW.cn.git/atom.xml" title="GUIYIVIEW" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -98,7 +98,7 @@
 
   <div class="site-meta">
 
-    <a href="/GUIYIVIEW/GUIYIVIEW.github.io.git/" class="brand" rel="start">
+    <a href="/GUIYIVIEW/GUIYIVIEW.cn.git/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <h1 class="site-title">GUIYIVIEW</h1>
       <span class="logo-line-after"><i></i></span>
@@ -120,12 +120,12 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/GUIYIVIEW/GUIYIVIEW.github.io.git/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/GUIYIVIEW/GUIYIVIEW.cn.git/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/GUIYIVIEW/GUIYIVIEW.github.io.git/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/GUIYIVIEW/GUIYIVIEW.cn.git/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -183,10 +183,10 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/2022/11/04/2022110407/">
+    <link itemprop="mainEntityOfPage" href="https://github.com/GUIYIVIEW/GUIYIVIEW.cn.git/2022/11/04/2022110407/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/GUIYIVIEW/GUIYIVIEW.github.io.git/images/avatar.gif">
+      <meta itemprop="image" content="/GUIYIVIEW/GUIYIVIEW.cn.git/images/avatar.gif">
       <meta itemprop="name" content="GUIYIVIEW">
       <meta itemprop="description" content="iOS/Swift">
     </span>
@@ -215,7 +215,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/GUIYIVIEW/GUIYIVIEW.github.io.git/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a>
+                  <a href="/GUIYIVIEW/GUIYIVIEW.cn.git/categories/iOS/" itemprop="url" rel="index"><span itemprop="name">iOS</span></a>
                 </span>
             </span>
 
@@ -244,9 +244,9 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/GUIYIVIEW/GUIYIVIEW.github.io.git/tags/iOS/" rel="tag"># iOS</a>
-              <a href="/GUIYIVIEW/GUIYIVIEW.github.io.git/tags/Swift/" rel="tag"># Swift</a>
-              <a href="/GUIYIVIEW/GUIYIVIEW.github.io.git/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag"># 设计模式</a>
+              <a href="/GUIYIVIEW/GUIYIVIEW.cn.git/tags/iOS/" rel="tag"># iOS</a>
+              <a href="/GUIYIVIEW/GUIYIVIEW.cn.git/tags/Swift/" rel="tag"># Swift</a>
+              <a href="/GUIYIVIEW/GUIYIVIEW.cn.git/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag"># 设计模式</a>
           </div>
 
         
@@ -255,11 +255,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/GUIYIVIEW/GUIYIVIEW.github.io.git/2022/11/04/2022110406/" rel="prev" title="iOS崩溃错误分析记录">
+    <a href="/GUIYIVIEW/GUIYIVIEW.cn.git/2022/11/04/2022110406/" rel="prev" title="iOS崩溃错误分析记录">
       <i class="fa fa-chevron-left"></i> iOS崩溃错误分析记录
     </a></div>
       <div class="post-nav-item">
-    <a href="/GUIYIVIEW/GUIYIVIEW.github.io.git/2022/11/04/2022110408/" rel="next" title="iOS LaunchScreen.storyboard启动图更新">
+    <a href="/GUIYIVIEW/GUIYIVIEW.cn.git/2022/11/04/2022110408/" rel="next" title="iOS LaunchScreen.storyboard启动图更新">
       iOS LaunchScreen.storyboard启动图更新 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -332,7 +332,7 @@
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/GUIYIVIEW/GUIYIVIEW.github.io.git/archives/">
+          <a href="/GUIYIVIEW/GUIYIVIEW.cn.git/archives/">
         
           <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
@@ -350,7 +350,7 @@
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="/GUIYIVIEW/GUIYIVIEW.github.io.git/468296943@qq.com" title="E-Mail → 468296943@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+        <a href="/GUIYIVIEW/GUIYIVIEW.cn.git/468296943@qq.com" title="E-Mail → 468296943@qq.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
       </span>
   </div>
 
@@ -398,20 +398,20 @@
   </div>
 
   
-  <script src="/GUIYIVIEW/GUIYIVIEW.github.io.git/lib/anime.min.js"></script>
-  <script src="/GUIYIVIEW/GUIYIVIEW.github.io.git/lib/pjax/pjax.min.js"></script>
-  <script src="/GUIYIVIEW/GUIYIVIEW.github.io.git/lib/velocity/velocity.min.js"></script>
-  <script src="/GUIYIVIEW/GUIYIVIEW.github.io.git/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/GUIYIVIEW/GUIYIVIEW.cn.git/lib/anime.min.js"></script>
+  <script src="/GUIYIVIEW/GUIYIVIEW.cn.git/lib/pjax/pjax.min.js"></script>
+  <script src="/GUIYIVIEW/GUIYIVIEW.cn.git/lib/velocity/velocity.min.js"></script>
+  <script src="/GUIYIVIEW/GUIYIVIEW.cn.git/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/GUIYIVIEW/GUIYIVIEW.github.io.git/js/utils.js"></script>
+<script src="/GUIYIVIEW/GUIYIVIEW.cn.git/js/utils.js"></script>
 
-<script src="/GUIYIVIEW/GUIYIVIEW.github.io.git/js/motion.js"></script>
-
-
-<script src="/GUIYIVIEW/GUIYIVIEW.github.io.git/js/schemes/pisces.js"></script>
+<script src="/GUIYIVIEW/GUIYIVIEW.cn.git/js/motion.js"></script>
 
 
-<script src="/GUIYIVIEW/GUIYIVIEW.github.io.git/js/next-boot.js"></script>
+<script src="/GUIYIVIEW/GUIYIVIEW.cn.git/js/schemes/pisces.js"></script>
+
+
+<script src="/GUIYIVIEW/GUIYIVIEW.cn.git/js/next-boot.js"></script>
 
   <script>
 var pjax = new Pjax({
@@ -481,7 +481,7 @@ window.addEventListener('pjax:success', () => {
 
 
   
-<script src="/GUIYIVIEW/GUIYIVIEW.github.io.git/js/local-search.js"></script>
+<script src="/GUIYIVIEW/GUIYIVIEW.cn.git/js/local-search.js"></script>
 
 
 

@@ -3,11 +3,11 @@
   <title>GUIYIVIEW</title>
   
   <subtitle>生活随笔</subtitle>
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
+  <link href="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/"/>
   <updated>2022-11-04T07:38:40.441Z</updated>
-  <id>http://example.com/</id>
+  <id>https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/</id>
   
   <author>
     <name>GUIYIVIEW</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>iOS LaunchScreen.storyboard启动图更新</title>
-    <link href="http://example.com/2022/11/04/2022110408/"/>
-    <id>http://example.com/2022/11/04/2022110408/</id>
+    <link href="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/2022/11/04/2022110408/"/>
+    <id>https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/2022/11/04/2022110408/</id>
     <published>2022-11-04T07:37:50.000Z</published>
     <updated>2022-11-04T07:38:40.441Z</updated>
     
@@ -35,19 +35,19 @@
     
     
     
-    <category term="iOS" scheme="http://example.com/categories/iOS/"/>
+    <category term="iOS" scheme="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/categories/iOS/"/>
     
     
-    <category term="iOS" scheme="http://example.com/tags/iOS/"/>
+    <category term="iOS" scheme="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/tags/iOS/"/>
     
-    <category term="启动图" scheme="http://example.com/tags/%E5%90%AF%E5%8A%A8%E5%9B%BE/"/>
+    <category term="启动图" scheme="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/tags/%E5%90%AF%E5%8A%A8%E5%9B%BE/"/>
     
   </entry>
   
   <entry>
     <title>Swift Target-Action、Curring 设计模式</title>
-    <link href="http://example.com/2022/11/04/2022110407/"/>
-    <id>http://example.com/2022/11/04/2022110407/</id>
+    <link href="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/2022/11/04/2022110407/"/>
+    <id>https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/2022/11/04/2022110407/</id>
     <published>2022-11-04T07:36:50.000Z</published>
     <updated>2022-11-04T07:37:31.649Z</updated>
     
@@ -62,21 +62,21 @@
     
     
     
-    <category term="iOS" scheme="http://example.com/categories/iOS/"/>
+    <category term="iOS" scheme="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/categories/iOS/"/>
     
     
-    <category term="iOS" scheme="http://example.com/tags/iOS/"/>
+    <category term="iOS" scheme="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/tags/iOS/"/>
     
-    <category term="Swift" scheme="http://example.com/tags/Swift/"/>
+    <category term="Swift" scheme="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/tags/Swift/"/>
     
-    <category term="设计模式" scheme="http://example.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    <category term="设计模式" scheme="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   
   <entry>
     <title>iOS崩溃错误分析记录</title>
-    <link href="http://example.com/2022/11/04/2022110406/"/>
-    <id>http://example.com/2022/11/04/2022110406/</id>
+    <link href="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/2022/11/04/2022110406/"/>
+    <id>https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/2022/11/04/2022110406/</id>
     <published>2022-11-04T07:35:58.000Z</published>
     <updated>2022-11-04T07:36:32.371Z</updated>
     
@@ -90,19 +90,19 @@
     
     
     
-    <category term="iOS" scheme="http://example.com/categories/iOS/"/>
+    <category term="iOS" scheme="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/categories/iOS/"/>
     
     
-    <category term="iOS" scheme="http://example.com/tags/iOS/"/>
+    <category term="iOS" scheme="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/tags/iOS/"/>
     
-    <category term="crash" scheme="http://example.com/tags/crash/"/>
+    <category term="crash" scheme="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/tags/crash/"/>
     
   </entry>
   
   <entry>
     <title>iOS打包 fastlane多个target同时打包</title>
-    <link href="http://example.com/2022/11/04/2022110405/"/>
-    <id>http://example.com/2022/11/04/2022110405/</id>
+    <link href="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/2022/11/04/2022110405/"/>
+    <id>https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/2022/11/04/2022110405/</id>
     <published>2022-11-04T07:31:54.000Z</published>
     <updated>2022-11-04T07:53:58.915Z</updated>
     
@@ -116,23 +116,23 @@
     
     
     
-    <category term="iOS" scheme="http://example.com/categories/iOS/"/>
+    <category term="iOS" scheme="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/categories/iOS/"/>
     
-    <category term="打包" scheme="http://example.com/categories/iOS/%E6%89%93%E5%8C%85/"/>
+    <category term="打包" scheme="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/categories/iOS/%E6%89%93%E5%8C%85/"/>
     
     
-    <category term="iOS" scheme="http://example.com/tags/iOS/"/>
+    <category term="iOS" scheme="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/tags/iOS/"/>
     
-    <category term="fastlane" scheme="http://example.com/tags/fastlane/"/>
+    <category term="fastlane" scheme="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/tags/fastlane/"/>
     
-    <category term="打包" scheme="http://example.com/tags/%E6%89%93%E5%8C%85/"/>
+    <category term="打包" scheme="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/tags/%E6%89%93%E5%8C%85/"/>
     
   </entry>
   
   <entry>
     <title>NSTimer、CADisplayLink、dispatch_source_t小记</title>
-    <link href="http://example.com/2022/11/04/2022110404/"/>
-    <id>http://example.com/2022/11/04/2022110404/</id>
+    <link href="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/2022/11/04/2022110404/"/>
+    <id>https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/2022/11/04/2022110404/</id>
     <published>2022-11-04T07:30:22.000Z</published>
     <updated>2022-11-04T07:30:55.249Z</updated>
     
@@ -147,17 +147,17 @@
     
     
     
-    <category term="iOS" scheme="http://example.com/categories/iOS/"/>
+    <category term="iOS" scheme="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/categories/iOS/"/>
     
     
-    <category term="iOS" scheme="http://example.com/tags/iOS/"/>
+    <category term="iOS" scheme="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>Masonry--更新动画</title>
-    <link href="http://example.com/2022/11/04/2022110403/"/>
-    <id>http://example.com/2022/11/04/2022110403/</id>
+    <link href="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/2022/11/04/2022110403/"/>
+    <id>https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/2022/11/04/2022110403/</id>
     <published>2022-11-04T07:28:15.000Z</published>
     <updated>2022-11-04T07:30:11.833Z</updated>
     
@@ -171,17 +171,17 @@
     
     
     
-    <category term="iOS" scheme="http://example.com/categories/iOS/"/>
+    <category term="iOS" scheme="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/categories/iOS/"/>
     
     
-    <category term="iOS" scheme="http://example.com/tags/iOS/"/>
+    <category term="iOS" scheme="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/tags/iOS/"/>
     
   </entry>
   
   <entry>
     <title>微信小程序-flex布局</title>
-    <link href="http://example.com/2022/11/04/2022110402/"/>
-    <id>http://example.com/2022/11/04/2022110402/</id>
+    <link href="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/2022/11/04/2022110402/"/>
+    <id>https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/2022/11/04/2022110402/</id>
     <published>2022-11-04T07:25:25.000Z</published>
     <updated>2022-11-04T07:28:58.671Z</updated>
     
@@ -195,19 +195,19 @@
     
     
     
-    <category term="小程序" scheme="http://example.com/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    <category term="小程序" scheme="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
     
-    <category term="小程序" scheme="http://example.com/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    <category term="小程序" scheme="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
-    <category term="Weex" scheme="http://example.com/tags/Weex/"/>
+    <category term="Weex" scheme="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/tags/Weex/"/>
     
   </entry>
   
   <entry>
     <title>iOS监听系统侧滑返回事件</title>
-    <link href="http://example.com/2022/11/04/2022110401/"/>
-    <id>http://example.com/2022/11/04/2022110401/</id>
+    <link href="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/2022/11/04/2022110401/"/>
+    <id>https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/2022/11/04/2022110401/</id>
     <published>2022-11-04T07:16:08.000Z</published>
     <updated>2022-11-04T07:24:17.416Z</updated>
     
@@ -221,19 +221,19 @@
     
     
     
-    <category term="iOS" scheme="http://example.com/categories/iOS/"/>
+    <category term="iOS" scheme="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/categories/iOS/"/>
     
     
-    <category term="iOS" scheme="http://example.com/tags/iOS/"/>
+    <category term="iOS" scheme="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/tags/iOS/"/>
     
-    <category term="侧滑返回" scheme="http://example.com/tags/%E4%BE%A7%E6%BB%91%E8%BF%94%E5%9B%9E/"/>
+    <category term="侧滑返回" scheme="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/tags/%E4%BE%A7%E6%BB%91%E8%BF%94%E5%9B%9E/"/>
     
   </entry>
   
   <entry>
     <title>地址迁移</title>
-    <link href="http://example.com/2022/11/04/hello-world/"/>
-    <id>http://example.com/2022/11/04/hello-world/</id>
+    <link href="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/2022/11/04/hello-world/"/>
+    <id>https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/2022/11/04/hello-world/</id>
     <published>2022-11-04T03:55:52.189Z</published>
     <updated>2022-11-04T07:35:30.395Z</updated>
     
@@ -249,7 +249,7 @@
     
     
     
-    <category term="Blog" scheme="http://example.com/tags/Blog/"/>
+    <category term="Blog" scheme="https://github.com/GUIYIVIEW/GUIYIVIEW.github.io.git/tags/Blog/"/>
     
   </entry>
   
